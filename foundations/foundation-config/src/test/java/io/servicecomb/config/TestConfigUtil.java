@@ -43,13 +43,13 @@ public class TestConfigUtil {
   private static final String environmentPropertyName = "servicecomb.environment.setting";
   private static final String environmentExpected = uniquify("ran");
 
-  private final MapBasedConfigurationSource configurationSource = new MapBasedConfigurationSource();
+  //private final MapBasedConfigurationSource configurationSource = new MapBasedConfigurationSource();
 
   @BeforeClass
   public static void beforeTest() {
     cleanConfig();
 
-    System.setProperty(systemPropertyName, systemExpected);
+    //System.setProperty(systemPropertyName, systemExpected);
 
 //    try {
 //      setEnv(environmentPropertyName, environmentExpected);
@@ -59,14 +59,14 @@ public class TestConfigUtil {
 
     ConfigUtil.installDynamicConfig();
   }
-
-  @AfterClass
-  public static void tearDown() throws Exception {
-    cleanConfig();
-    //recover config
-    ConfigUtil.installDynamicConfig();
-  }
-
+//
+//  @AfterClass
+//  public static void tearDown() throws Exception {
+//    cleanConfig();
+//    //recover config
+//    ConfigUtil.installDynamicConfig();
+//  }
+//
   private static void cleanConfig()
   {
     Deencapsulation.setField(ConfigurationManager.class, "instance", null);
@@ -96,16 +96,16 @@ public class TestConfigUtil {
         equalTo(expected));
   }
 
-  @Test
-  public void propertiesFromSystemIsDuplicatedToCse() throws Exception {
-    assertThat(DynamicPropertyFactory
-            .getInstance().getStringProperty(systemPropertyName, null).get(),
-        equalTo(systemExpected));
-
-    assertThat(DynamicPropertyFactory
-            .getInstance().getStringProperty("cse.system.setting", null).get(),
-        equalTo(systemExpected));
-  }
+//  @Test
+//  public void propertiesFromSystemIsDuplicatedToCse() throws Exception {
+//    assertThat(DynamicPropertyFactory
+//            .getInstance().getStringProperty(systemPropertyName, null).get(),
+//        equalTo(systemExpected));
+//
+//    assertThat(DynamicPropertyFactory
+//            .getInstance().getStringProperty("cse.system.setting", null).get(),
+//        equalTo(systemExpected));
+//  }
 
 //  @Test
 //  public void propertiesFromEnvironmentIsDuplicatedToCse() throws Exception {
