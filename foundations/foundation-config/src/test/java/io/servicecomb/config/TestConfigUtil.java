@@ -76,14 +76,14 @@ public class TestConfigUtil {
 
   @Test
   public void propertiesFromFileIsDuplicatedToCse() throws Exception {
-    String expected = "http://localhost:9411/api/v1/spans";
+    String expected = "vaule";
 
     assertThat(DynamicPropertyFactory
-            .getInstance().getStringProperty("servicecomb.tracing.collector.address", null).get(),
+            .getInstance().getStringProperty("servicecomb.whatever.cse.key", null).get(),
         equalTo(expected));
 
     assertThat(DynamicPropertyFactory
-            .getInstance().getStringProperty("cse.tracing.collector.address", null).get(),
+            .getInstance().getStringProperty("cse.whatever.cse.key", null).get(),
         equalTo(expected));
   }
 
