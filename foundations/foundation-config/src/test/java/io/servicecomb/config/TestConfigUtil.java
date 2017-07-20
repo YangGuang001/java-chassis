@@ -47,6 +47,8 @@ public class TestConfigUtil {
 
   @BeforeClass
   public static void beforeTest() {
+    cleanConfig();
+
     System.setProperty(systemPropertyName, systemExpected);
 
     try {
@@ -60,6 +62,13 @@ public class TestConfigUtil {
 
   @AfterClass
   public static void tearDown() throws Exception {
+    cleanConfig();
+    //recover config
+    ConfigUtil.installDynamicConfig();
+  }
+
+  private static  void cleanConfig()
+  {
     Deencapsulation.setField(ConfigurationManager.class, "instance", null);
     Deencapsulation.setField(ConfigurationManager.class, "customConfigurationInstalled", false);
     Deencapsulation.setField(DynamicPropertyFactory.class, "config", null);
