@@ -109,13 +109,13 @@ public final class ConfigUtil {
       configFromConfigCenter.getSource().addUpdateListener(new ServiceCombPropertyUpdateListener(injectConfig));
     }
 
-    duplicateServiceCombConfigToCse(config, configFromYamlFile, "configFromYamlFile");
-
     duplicateServiceCombConfigToCse(config, new ConcurrentMapConfiguration(new SystemConfiguration()),
         "configFromSystem");
 
     duplicateServiceCombConfigToCse(config, new ConcurrentMapConfiguration(new EnvironmentConfiguration()),
         "configFromEnvironment");
+
+    duplicateServiceCombConfigToCse(config, configFromYamlFile, "configFromYamlFile");
 
     return config;
   }
